@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Menu utama Pustaka Kampus.">
+  <title>Dashboard | Pustaka Kampus</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-halaman="dashboard">
+  <header class="topbar">
+    <div class="container topbar-isi">
+      <a class="brand" href="dashboard.html"><img src="assets/logo.svg" alt="" width="34" height="34"><span>Pustaka Kampus</span></a>
+      <nav class="nav" aria-label="Navigasi utama">
+        <a href="dashboard.html" aria-current="page">Dashboard</a>
+        <a href="stok.html">Stok</a>
+        <a href="checkout.html">Pemesanan <span class="badge-nav" id="badgeKeranjang" hidden>0</span></a>
+        <a href="tracking.html">Tracking</a>
+        <a href="laporan.html">Laporan</a>
+        <a href="riwayat.html">Riwayat</a>
+      </nav>
+      <div class="akun">
+        <span id="namaPengguna"></span>
+        <button type="button" class="btn btn-garis btn-kecil" id="btnLogout">Keluar</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="konten">
+    <div class="container">
+      <section class="salam" aria-labelledby="salam">
+        <div>
+          <h1 id="salam">Selamat datang</h1>
+          <p>Mau ke mana hari ini?</p>
+        </div>
+        <div class="jam" aria-live="off"><span id="jam"></span><small id="tanggal"></small></div>
+      </section>
+
+      <section aria-label="Menu utama">
+        <div class="menu-grid">
+          <a class="menu-kartu" href="stok.html"><h2>Informasi Stok</h2><p>Lihat katalog buku, cek ketersediaan, dan tambah stok baru.</p><span>Buka katalog</span></a>
+          <a class="menu-kartu" href="tracking.html"><h2>Tracking Pengiriman</h2><p>Lacak paket dengan nomor Delivery Order.</p><span>Lacak paket</span></a>
+          <a class="menu-kartu" href="laporan.html"><h2>Laporan Pemesanan</h2><p>Ringkasan penjualan per judul dan metode pembayaran.</p><span>Lihat laporan</span></a>
+          <a class="menu-kartu" href="riwayat.html"><h2>History Transaksi</h2><p>Daftar semua pesanan beserta statusnya.</p><span>Buka riwayat</span></a>
+        </div>
+      </section>
+
+      <section aria-label="Ringkasan">
+        <dl class="stat-baris">
+          <div class="stat"><dt>Judul buku</dt><dd id="statJudul">0</dd></div>
+          <div class="stat"><dt>Total stok</dt><dd id="statStok">0</dd></div>
+          <div class="stat"><dt>Pesanan</dt><dd id="statPesanan">0</dd></div>
+          <div class="stat"><dt>Nilai transaksi</dt><dd id="statOmzet">Rp 0</dd></div>
+        </dl>
+        <p><a class="btn btn-primer" href="checkout.html">Buat pesanan baru</a></p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container"><p>Pustaka Kampus, tugas UTS Pemrograman Web 1. Data berasal dari js/data.js, tanpa server.</p></div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

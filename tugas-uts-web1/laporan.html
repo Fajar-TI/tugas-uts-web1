@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ringkasan penjualan buku.">
+  <title>Laporan Pemesanan | Pustaka Kampus</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-halaman="laporan">
+  <header class="topbar">
+    <div class="container topbar-isi">
+      <a class="brand" href="dashboard.html"><img src="assets/logo.svg" alt="" width="34" height="34"><span>Pustaka Kampus</span></a>
+      <nav class="nav" aria-label="Navigasi utama">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="stok.html">Stok</a>
+        <a href="checkout.html">Pemesanan <span class="badge-nav" id="badgeKeranjang" hidden>0</span></a>
+        <a href="tracking.html">Tracking</a>
+        <a href="laporan.html" aria-current="page">Laporan</a>
+        <a href="riwayat.html">Riwayat</a>
+      </nav>
+      <div class="akun">
+        <span id="namaPengguna"></span>
+        <button type="button" class="btn btn-garis btn-kecil" id="btnLogout">Keluar</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="konten">
+    <div class="container">
+      <header class="judul-halaman">
+        <h1>Laporan pemesanan</h1>
+        <p>Dihitung dari semua pesanan, termasuk dua pesanan contoh dari data.js.</p>
+      </header>
+
+      <dl class="stat-baris">
+        <div class="stat"><dt>Jumlah pesanan</dt><dd id="lPesanan">0</dd></div>
+        <div class="stat"><dt>Buku terjual</dt><dd id="lBuku">0</dd></div>
+        <div class="stat"><dt>Nilai transaksi</dt><dd id="lOmzet">Rp 0</dd></div>
+        <div class="stat"><dt>Rata-rata per pesanan</dt><dd id="lRata">Rp 0</dd></div>
+      </dl>
+
+      <section class="panel" aria-labelledby="hPerJudul">
+        <h2 id="hPerJudul">Penjualan per judul</h2>
+        <div class="tabel-wrap">
+          <table class="tabel">
+            <caption>Diurutkan dari nilai penjualan tertinggi</caption>
+            <thead><tr><th scope="col">Judul</th><th scope="col">Terjual</th><th scope="col">Nilai</th><th scope="col">Porsi</th></tr></thead>
+            <tbody id="isiLaporan"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="form-grid">
+        <section class="panel" aria-labelledby="hBayar"><h2 id="hBayar">Metode pembayaran</h2><ul class="daftar-ringkas" id="daftarBayar"></ul></section>
+        <section class="panel" aria-labelledby="hEkspedisi"><h2 id="hEkspedisi">Ekspedisi</h2><ul class="daftar-ringkas" id="daftarEkspedisi"></ul></section>
+      </div>
+      <p class="no-print"><button type="button" class="btn btn-garis" id="btnCetak">Cetak laporan</button></p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container"><p>Pustaka Kampus, tugas UTS Pemrograman Web 1. Data berasal dari js/data.js, tanpa server.</p></div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

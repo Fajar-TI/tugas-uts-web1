@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Masuk ke Pustaka Kampus untuk memesan buku ajar dan melacak pengiriman.">
+  <title>Masuk | Pustaka Kampus</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap">
+  <!-- CSS eksternal -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- CSS internal: warna dan tinggi punggung buku pada rak di panel kiri -->
+  <style>
+    .rak span:nth-child(1){height:62%;background:#F0B429}
+    .rak span:nth-child(2){height:88%;background:#3F7F6C}
+    .rak span:nth-child(3){height:48%;background:#7A3E6B}
+    .rak span:nth-child(4){height:76%;background:#E8E9F5}
+    .rak span:nth-child(5){height:94%;background:#2F6DA8;transform:rotate(7deg);transform-origin:bottom left;margin-right:14px}
+    .rak span:nth-child(6){height:70%;background:#F0B429}
+    .rak span:nth-child(7){height:55%;background:#3F7F6C}
+    .rak span:nth-child(8){height:84%;background:#C96A4A}
+    .rak span:nth-child(9){height:66%;background:#E8E9F5}
+  </style>
+</head>
+<body class="halaman-login" data-halaman="login">
+  <main class="auth">
+    <section class="auth-brand" aria-labelledby="judulBrand">
+      <div>
+        <a class="brand" href="index.html"><img src="assets/logo.svg" alt="" width="40" height="40"><span>Pustaka Kampus</span></a>
+        <h1 id="judulBrand">Pesan buku ajar tanpa antre.</h1>
+        <p>Cek stok, pesan, dan lacak kiriman dari satu tempat.</p>
+      </div>
+      <div class="rak" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </section>
+
+    <section class="auth-panel" aria-labelledby="judulLogin">
+      <h2 id="judulLogin">Masuk ke akun</h2>
+      <form id="formLogin" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="nama@gmail.com" autocomplete="username">
+          <small class="pesan-error" role="alert"></small>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" autocomplete="current-password">
+          <small class="pesan-error" role="alert"></small>
+        </div>
+        <label class="cek"><input type="checkbox" id="lihatPassword"> Tampilkan password</label>
+        <button type="submit" class="btn btn-primer btn-penuh">Login</button>
+      </form>
+
+      <div class="auth-aksi">
+        <button type="button" class="btn btn-garis" id="btnLupa">Lupa Password</button>
+        <button type="button" class="btn btn-garis" id="btnDaftar">Daftar</button>
+      </div>
+
+      <details class="akun-demo">
+        <summary>Akun untuk mencoba</summary>
+        <ul>
+          <li>rina@gmail.com / rina123 (User)</li>
+          <li>agus@gmail.com / agus123 (User)</li>
+          <li>siti@gmail.com / siti123 (Admin)</li>
+        </ul>
+      </details>
+    </section>
+  </main>
+
+  <!-- Modal Lupa Password -->
+  <dialog class="modal" id="dlgLupa" aria-labelledby="jLupa">
+    <div class="modal-isi">
+      <h2 id="jLupa">Lupa password</h2>
+      <p>Masukkan email akun Anda. Kami kirim tautan untuk membuat password baru.</p>
+      <form id="formLupa" novalidate>
+        <div class="field">
+          <label for="emailLupa">Email terdaftar</label>
+          <input type="email" id="emailLupa" name="email" placeholder="nama@gmail.com">
+          <small class="pesan-error" role="alert"></small>
+        </div>
+        <p class="hasil-modal" id="hasilLupa" role="status" hidden></p>
+        <div class="modal-aksi">
+          <button type="button" class="btn btn-garis" data-tutup>Tutup</button>
+          <button type="submit" class="btn btn-primer">Kirim tautan</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Modal Daftar -->
+  <dialog class="modal" id="dlgDaftar" aria-labelledby="jDaftar">
+    <div class="modal-isi">
+      <h2 id="jDaftar">Buat akun baru</h2>
+      <form id="formDaftar" novalidate>
+        <div class="field">
+          <label for="namaDaftar">Nama lengkap</label>
+          <input type="text" id="namaDaftar" name="nama" autocomplete="name">
+          <small class="pesan-error" role="alert"></small>
+        </div>
+        <div class="field">
+          <label for="emailDaftar">Email</label>
+          <input type="email" id="emailDaftar" name="email" autocomplete="email">
+          <small class="pesan-error" role="alert"></small>
+        </div>
+        <div class="field">
+          <label for="passDaftar">Password</label>
+          <input type="password" id="passDaftar" name="password" autocomplete="new-password">
+          <small class="bantuan">Minimal 6 karakter, kombinasi huruf dan angka.</small>
+          <small class="pesan-error" role="alert"></small>
+        </div>
+        <div class="field">
+          <label for="konfDaftar">Ulangi password</label>
+          <input type="password" id="konfDaftar" name="konfirmasi" autocomplete="new-password">
+          <small class="pesan-error" role="alert"></small>
+        </div>
+        <div class="modal-aksi">
+          <button type="button" class="btn btn-garis" data-tutup>Batal</button>
+          <button type="submit" class="btn btn-primer">Daftar</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

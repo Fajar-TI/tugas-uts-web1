@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Buat pesanan buku di Pustaka Kampus.">
+  <title>Pemesanan | Pustaka Kampus</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-halaman="checkout">
+  <header class="topbar">
+    <div class="container topbar-isi">
+      <a class="brand" href="dashboard.html"><img src="assets/logo.svg" alt="" width="34" height="34"><span>Pustaka Kampus</span></a>
+      <nav class="nav" aria-label="Navigasi utama">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="stok.html">Stok</a>
+        <a href="checkout.html" aria-current="page">Pemesanan <span class="badge-nav" id="badgeKeranjang" hidden>0</span></a>
+        <a href="tracking.html">Tracking</a>
+        <a href="laporan.html">Laporan</a>
+        <a href="riwayat.html">Riwayat</a>
+      </nav>
+      <div class="akun">
+        <span id="namaPengguna"></span>
+        <button type="button" class="btn btn-garis btn-kecil" id="btnLogout">Keluar</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="konten">
+    <div class="container">
+      <header class="judul-halaman">
+        <h1>Pemesanan buku</h1>
+        <p>Atur isi pesanan, lengkapi data pemesan, lalu pilih pembayaran.</p>
+      </header>
+
+      <div class="dua-kolom">
+        <div>
+          <section class="panel" aria-labelledby="hKeranjang">
+            <h2 id="hKeranjang">Isi pesanan</h2>
+            <div class="tabel-wrap">
+              <table class="tabel">
+                <caption>Ubah jumlah dengan tombol + dan -, atau hapus buku dari pesanan</caption>
+                <thead><tr><th scope="col">Buku</th><th scope="col">Harga</th><th scope="col">Jumlah</th><th scope="col">Subtotal</th><th scope="col">Aksi</th></tr></thead>
+                <tbody id="isiKeranjang"></tbody>
+              </table>
+            </div>
+            <form id="formTambah" class="tambah-baris" novalidate>
+              <div class="field">
+                <label for="pilihBuku">Tambah buku</label>
+                <select id="pilihBuku" name="buku"></select>
+                <small class="pesan-error" role="alert"></small>
+              </div>
+              <div class="field">
+                <label for="qtyTambah">Jumlah</label>
+                <input type="number" id="qtyTambah" name="qty" min="1" value="1">
+                <small class="pesan-error" role="alert"></small>
+              </div>
+              <button type="submit" class="btn btn-garis" style="margin-bottom:1rem">Tambah</button>
+            </form>
+          </section>
+
+          <section class="panel" aria-labelledby="hPemesan">
+            <h2 id="hPemesan">Data pemesan dan pembayaran</h2>
+            <form id="formPesan" novalidate>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="namaPemesan">Nama pemesan</label>
+                  <input type="text" id="namaPemesan" name="nama" autocomplete="name">
+                  <small class="pesan-error" role="alert"></small>
+                </div>
+                <div class="field">
+                  <label for="emailPemesan">Email</label>
+                  <input type="email" id="emailPemesan" name="email" autocomplete="email">
+                  <small class="pesan-error" role="alert"></small>
+                </div>
+                <div class="field">
+                  <label for="telepon">Nomor HP</label>
+                  <input type="tel" id="telepon" name="telepon" placeholder="081234567890" autocomplete="tel">
+                  <small class="pesan-error" role="alert"></small>
+                </div>
+                <div class="field">
+                  <label for="kodepos">Kode pos</label>
+                  <input type="text" id="kodepos" name="kodepos" inputmode="numeric" maxlength="5" autocomplete="postal-code">
+                  <small class="pesan-error" role="alert"></small>
+                </div>
+                <div class="field lebar">
+                  <label for="alamat">Alamat pengiriman</label>
+                  <textarea id="alamat" name="alamat" rows="3" autocomplete="street-address"></textarea>
+                  <small class="pesan-error" role="alert"></small>
+                </div>
+                <div class="field lebar">
+                  <label for="ekspedisi">Ekspedisi</label>
+                  <select id="ekspedisi" name="ekspedisi">
+                    <option value="">Pilih ekspedisi...</option>
+                    <option value="JNE">JNE (Rp 15.000)</option>
+                    <option value="Pos Indonesia">Pos Indonesia (Rp 12.000)</option>
+                    <option value="J&amp;T Express">J&amp;T Express (Rp 14.000)</option>
+                    <option value="SiCepat">SiCepat (Rp 13.000)</option>
+                  </select>
+                  <small class="pesan-error" role="alert"></small>
+                </div>
+                <fieldset class="field lebar">
+                  <legend>Metode pembayaran</legend>
+                  <div class="opsi-bayar">
+                    <label><input type="radio" name="pembayaran" value="Transfer Bank"> Transfer Bank</label>
+                    <label><input type="radio" name="pembayaran" value="QRIS"> QRIS</label>
+                    <label><input type="radio" name="pembayaran" value="COD"> Bayar di tempat</label>
+                    <label><input type="radio" name="pembayaran" value="Kartu Kredit"> Kartu Kredit</label>
+                  </div>
+                  <small class="pesan-error" role="alert"></small>
+                </fieldset>
+              </div>
+              <button type="submit" class="btn btn-primer btn-penuh">Pesan sekarang</button>
+            </form>
+          </section>
+        </div>
+
+        <aside class="panel sticky" aria-labelledby="hRingkasan">
+          <h2 id="hRingkasan">Ringkasan</h2>
+          <dl class="ringkasan">
+            <div><dt>Subtotal buku</dt><dd id="rSubtotal">Rp 0</dd></div>
+            <div><dt>Ongkos kirim</dt><dd id="rOngkir">-</dd></div>
+            <div class="total"><dt>Total bayar</dt><dd id="rTotal">Rp 0</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container"><p>Pustaka Kampus, tugas UTS Pemrograman Web 1. Data berasal dari js/data.js, tanpa server.</p></div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
